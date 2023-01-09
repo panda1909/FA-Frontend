@@ -1,0 +1,97 @@
+ @import "./../../Styles/variables";
+ @import "./../../Styles/theme/mixins";
+
+ .form {
+   &__input {
+     outline: none;
+     border: 0;
+     background: none;
+     padding: 14px 2px;
+     //  border-radius: 85px;
+     color: var(--text-color);
+     border-bottom: 1px solid var(--text-color);
+     transition: all 0.3s ease-in-out;
+
+     @include placeholder {
+       color: #808080;
+     }
+
+     //  &:hover,
+     &:focus,
+     &:active {
+       background: linear-gradient(20deg, #c301b01f -6%, #9000ff25 80%);
+       border-bottom: 1px solid var(--primary);
+     }
+   }
+
+   &__submit {
+     outline: none;
+     border: 0;
+     color: var(--white);
+     padding: 14px 40px;
+     background: linear-gradient(93deg, #C301AF -6.12%, #9100FF 80.63%);
+     border-radius: 85px;
+     font-weight: 600;
+     font-size: 16px;
+     line-height: 19px;
+
+     &:hover,
+     &:focus,
+     &:active {
+       background: linear-gradient(40deg, #C301AF -6.12%, #9100FF 80.63%);
+     }
+   }
+
+   &__group {
+     display: flex;
+     align-items: center;
+     margin-bottom: 30px;
+   }
+
+   &__error {
+     color: #ff3333;
+     font-weight: 500;
+     font-size: 13px;
+     line-height: 17px;
+     margin-top: 5px;
+   }
+
+   &__txt {
+     color: var(--text-color);
+     font-weight: 500;
+     font-size: 13px;
+     line-height: 17px;
+
+     @include media-breakpoint-up(sm) {
+       font-size: 14px;
+       line-height: 18px;
+     }
+
+     @include media-breakpoint-up(md) {
+       font-size: 14px;
+       line-height: 18px;
+     }
+
+     @include media-breakpoint-up(lg) {
+       font-size: 15px;
+       line-height: 18px;
+     }
+
+     @include media-breakpoint-up(xl) {
+       font-size: 16px;
+       line-height: 19px;
+     }
+
+     @include media-breakpoint-up(xxl) {
+       font-size: 16px;
+       line-height: 19px;
+     }
+   }
+
+   &__link {
+     font-weight: 500;
+     color: #FE01E4;
+     font-size: 16px;
+     line-height: 19px;
+   }
+ }

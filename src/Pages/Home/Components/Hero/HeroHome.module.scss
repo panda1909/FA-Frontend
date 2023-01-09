@@ -1,0 +1,160 @@
+ @import "./../../../../Styles/variables";
+
+ .hero {
+   &__heading {
+     position: relative;
+     font-style: normal;
+     color: var(--text-color);
+     display: inline-block;
+     font-weight: 600;
+     font-size: 35px;
+     line-height: 50px;
+     margin-bottom: 20px;
+
+     @include media-breakpoint-up(sm) {
+       font-size: 50px;
+       line-height: 60px;
+       margin-bottom: 22px;
+     }
+
+     @include media-breakpoint-up(md) {
+       font-size: 62px;
+       line-height: 80px;
+       margin-bottom: 25px;
+     }
+
+     @include media-breakpoint-up(lg) {
+       font-size: 76px;
+       line-height: 100px;
+       margin-bottom: 35px;
+     }
+
+     @include media-breakpoint-up(xl) {
+       font-size: 86px;
+       line-height: 108px;
+       margin-bottom: 40px;
+     }
+
+     @include media-breakpoint-up(xxl) {
+       font-size: 96px;
+       line-height: 118px;
+       margin-bottom: 45px;
+     }
+   }
+
+   &__description {
+     font-family: var(--font-family-sec);
+     color: var(--text-color);
+     margin-right: auto;
+     margin-left: auto;
+     font-style: normal;
+     font-weight: 500;
+     padding: 0 5px;
+     font-size: 16px;
+     line-height: 23px;
+     letter-spacing: 0.02em;
+     width: 100%;
+
+     @include media-breakpoint-up(sm) {
+       padding: 0 10px;
+       font-size: 17px;
+       line-height: 23px;
+       letter-spacing: 0.02em;
+       width: 95%;
+     }
+
+     @include media-breakpoint-up(md) {
+       padding: 0 12px;
+       font-size: 18px;
+       line-height: 24px;
+       letter-spacing: 0.02em;
+       width: 90%;
+     }
+
+     @include media-breakpoint-up(lg) {
+       padding: 0 15px;
+       font-size: 19px;
+       line-height: 24px;
+       letter-spacing: 0.02em;
+       width: 90%;
+     }
+
+     @include media-breakpoint-up(xl) {
+       padding: 0 20px;
+       font-size: 20px;
+       line-height: 24px;
+       letter-spacing: 0.02em;
+       width: 85%;
+     }
+
+     @include media-breakpoint-up(xxl) {
+       padding: 0 22px;
+       font-size: 20px;
+       line-height: 24px;
+       letter-spacing: 0.02em;
+       width: 75%;
+     }
+   }
+
+   &__btn {
+     font-family: var(--font-family-sec);
+     text-align: center;
+     font-style: normal;
+     font-weight: 600;
+     font-size: 13px;
+     line-height: 18px;
+     border-radius: 0px;
+     padding: 6px 35px;
+     min-width: 200px;
+     width: 40%;
+     max-width: 85%;
+     color: var(--text-color);
+     background: transparent;
+     border: 2px solid $text-color;
+
+     &:hover,
+     &:focus,
+     &:active {
+       color: var(--white);
+       background: darken($text-color, 5%);
+       border: 2px solid $text-color;
+     }
+
+     // Extra Small devices (landscape phones, 376px and up)
+     @include media-breakpoint-up(xs) {
+       font-size: 14px;
+       line-height: 19px;
+       padding: 8px 35px;
+     }
+
+     // Small devices (landscape phones, 576px and up)
+     @include media-breakpoint-up(sm) {
+       font-size: 15px;
+       line-height: 19px;
+       padding: 9px 35px;
+
+     }
+
+     // Medium devices (tablets, 768px and up)
+     @include media-breakpoint-up(md) {
+       font-size: 16px;
+       line-height: 19px;
+       padding: 10px 40px;
+     }
+
+     // Large devices (desktops, 992px and up)
+     @include media-breakpoint-up(lg) {
+       font-size: 16px;
+       line-height: 19px;
+       padding: 14px 45px;
+     }
+
+     // X-Large devices (large desktops, 1200px and up)
+     @include media-breakpoint-up(xl) {
+       font-size: 16px;
+       line-height: 19px;
+       padding: 14px 50px;
+     }
+   }
+
+ }

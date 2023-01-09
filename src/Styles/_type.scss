@@ -1,0 +1,325 @@
+@import "./theme/mixins";
+/**
+ * = Typography
+ */
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-size: 100% 40vh;
+  background-position: 5px 0px, 0px 0px, 0px 0px;
+  background-image: var(--bs-body-bg);
+}
+
+html {}
+
+html,
+body,
+p {
+  --bs-body-font-size: 12.5px;
+  font-size: 12.5px;
+
+  // Extra Small devices (landscape phones, 376px and up)
+  @include media-breakpoint-up(xs) {
+    --bs-body-font-size: 13px;
+    font-size: 13px;
+  }
+
+  // Small devices (landscape phones, 576px and up)
+  @include media-breakpoint-up(sm) {
+    --bs-body-font-size: 14px;
+    font-size: 14px;
+  }
+
+  // Medium devices (tablets, 768px and up)
+  @include media-breakpoint-up(md) {
+    --bs-body-font-size: 15px;
+    font-size: 15px;
+  }
+
+  // Large devices (desktops, 992px and up)
+  @include media-breakpoint-up(lg) {
+    --bs-body-font-size: 16px;
+    font-size: 16px;
+  }
+
+  // X-Large devices (large desktops, 1200px and up)
+  @include media-breakpoint-up(xl) {
+    --bs-body-font-size: 16px;
+    font-size: 16px;
+  }
+}
+
+
+iframe {
+  border: 0;
+}
+
+figcaption,
+figure,
+main {
+  display: block;
+  margin: 0;
+}
+
+main {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+strong {
+  font-weight: $font-weight-bold;
+}
+
+button:focus {
+  outline: 0;
+}
+
+label {
+  font-weight: $font-weight-bold;
+  margin-bottom: .5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {}
+
+p,
+ol li,
+ul li,
+.p {
+  font-style: normal;
+  font-weight: 400;
+}
+
+a,
+.text-action {
+  color: $link-color;
+  transition: $transition-base;
+
+  &:hover {
+    color: $link-hover-color;
+    cursor: pointer;
+  }
+}
+
+.line-through {
+  -webkit-text-decoration: line-through;
+  text-decoration: line-through;
+}
+
+.text-italic {
+  font-style: italic !important;
+}
+
+
+.truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.text {
+  font-style: normal;
+  font-weight: 400;
+
+  &-xxs {
+    font-size: 12px;
+    line-height: 16px;
+
+    // Extra Small devices (landscape phones, 376px and up)
+    @include media-breakpoint-up(xs) {}
+
+    // Small devices (landscape phones, 576px and up)
+    @include media-breakpoint-up(sm) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @include media-breakpoint-up(md) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @include media-breakpoint-up(lg) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @include media-breakpoint-up(xl) {}
+  }
+
+  &-xs {
+    font-size: 12px;
+    line-height: 16px;
+
+    // Extra Small devices (landscape phones, 376px and up)
+    @include media-breakpoint-up(xs) {}
+
+    // Small devices (landscape phones, 576px and up)
+    @include media-breakpoint-up(sm) {
+      font-size: 12.5px;
+      line-height: 16px;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @include media-breakpoint-up(md) {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @include media-breakpoint-up(lg) {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @include media-breakpoint-up(xl) {}
+  }
+
+  &-sm {
+    font-size: 12px;
+    line-height: 16px;
+
+    // Extra Small devices (landscape phones, 376px and up)
+    @include media-breakpoint-up(xs) {}
+
+    // Small devices (landscape phones, 576px and up)
+    @include media-breakpoint-up(sm) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @include media-breakpoint-up(md) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @include media-breakpoint-up(lg) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @include media-breakpoint-up(xl) {}
+  }
+
+  &-md {
+    font-size: 12px;
+    line-height: 16px;
+
+    // Extra Small devices (landscape phones, 376px and up)
+    @include media-breakpoint-up(xs) {}
+
+    // Small devices (landscape phones, 576px and up)
+    @include media-breakpoint-up(sm) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @include media-breakpoint-up(md) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @include media-breakpoint-up(lg) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @include media-breakpoint-up(xl) {}
+  }
+
+  &-lg {
+    font-size: 12px;
+    line-height: 16px;
+
+    // Extra Small devices (landscape phones, 376px and up)
+    @include media-breakpoint-up(xs) {}
+
+    // Small devices (landscape phones, 576px and up)
+    @include media-breakpoint-up(sm) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @include media-breakpoint-up(md) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @include media-breakpoint-up(lg) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @include media-breakpoint-up(xl) {}
+  }
+
+  &-xl {
+    font-size: 12px;
+    line-height: 16px;
+
+    // Extra Small devices (landscape phones, 376px and up)
+    @include media-breakpoint-up(xs) {}
+
+    // Small devices (landscape phones, 576px and up)
+    @include media-breakpoint-up(sm) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Medium devices (tablets, 768px and up)
+    @include media-breakpoint-up(md) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // Large devices (desktops, 992px and up)
+    @include media-breakpoint-up(lg) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    // X-Large devices (large desktops, 1200px and up)
+    @include media-breakpoint-up(xl) {}
+  }
+}
+
+// FONT FAMILY
+.font-sec {
+  font-family: var(--font-family-sec);
+}
+
+// COLORs & BGs 
+.text-light {}
+
+.text-white {}
+
+.text-primary {}
