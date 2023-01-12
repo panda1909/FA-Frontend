@@ -35,3 +35,35 @@ a:hover {
 .mh-100vh {
   min-height: 100vh !important;
 }
+
+.scrolling .btn-1,
+.scrolling .btn-2 {
+  display: none !important;
+}
+
+body:not(.scrolling) .btn-1,
+body:not(.scrolling) .btn-2,
+.noscrolling .btn-1,
+.noscrolling .btn-2 {
+  display: block !important;
+}
+
+.btn-1 {
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  position: fixed !important;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.btn-2 {
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  position: fixed !important;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}

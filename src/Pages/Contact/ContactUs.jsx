@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 
-import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import DefaultLayout from "./../../Layouts/DefaultLayout";
@@ -25,9 +25,7 @@ import emailImg from "./img/contact-email.png";
 import agreeImg from "./img/contact-agree.png";
 import messageImg from "./img/conatct-message.png";
 
-
 const SignupSchema = yup.object().shape({
-
   r_name: yup
     .string()
     .required("Name is required.")
@@ -95,38 +93,40 @@ function ContactUs() {
     window.scrollTo(0, 0);
   }, []);
 
-
-
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    company: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    company: "",
   });
 
   const { name, email, subject, message, company } = formData;
 
   const [loading, setLoading] = useState(false);
 
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
-
-    console.log(import.meta.env.REACT_APP_BACKEND_API_ROUTE)
+  const onSubmit = (e) => {
+    console.log(import.meta.env.REACT_APP_BACKEND_API_ROUTE);
 
     e.preventDefault();
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     };
 
     setLoading(true);
-    axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` + '/contact-us', { name, email, subject, message, company }, config)
-      .then(res => {
-
-        toast.success('Form Submitted Successfully!', {
+    axios
+      .post(
+        `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` + "/contact-us",
+        { name, email, subject, message, company },
+        config
+      )
+      .then((res) => {
+        toast.success("Form Submitted Successfully!", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -135,10 +135,10 @@ function ContactUs() {
           draggable: true,
           progress: undefined,
           theme: "light",
-          });
+        });
         window.scrollTo(0, 0);
       })
-      .catch(err => {
+      .catch((err) => {
         toast.error(err, {
           autoClose: 5000,
           hideProgressBar: false,
@@ -147,14 +147,11 @@ function ContactUs() {
           draggable: true,
           progress: undefined,
           theme: "light",
-          });
-        toast.error(err)
+        });
+        toast.error(err);
         window.scrollTo(0, 0);
-      })
+      });
   };
-
-
-
 
   return (
     <>
@@ -168,7 +165,8 @@ function ContactUs() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"/>
+        theme="light"
+      />
       <ToastContainer />
       <DefaultLayout>
         <section className={css.section}>
@@ -183,7 +181,7 @@ function ContactUs() {
 
             <div className="d-flex align-items-center justify-content-center">
               <div className={"w-100 " + css.card}>
-                <form onSubmit={e => onSubmit(e)} id="contact-us-form">
+                <form onSubmit={(e) => onSubmit(e)} id="contact-us-form">
                   <div className="row justify-content-center">
                     <div className="col-md-10 col-sm-11 col-12">
                       <div className={css["control"]}>
@@ -192,14 +190,13 @@ function ContactUs() {
                         </div>
                         <input
                           className={css["control__input"]}
-                          name='name'
-                          type='text'
-                          placeholder=''
-                          onChange={e => onChange(e)}
+                          name="name"
+                          type="text"
+                          placeholder=""
+                          onChange={(e) => onChange(e)}
                           value={name}
                           required
                         />
-
                       </div>
                     </div>
                     <div className="col-md-10 col-sm-11 col-12">
@@ -209,13 +206,12 @@ function ContactUs() {
                         </div>
                         <input
                           className={css["control__input"]}
-                          name='company'
-                          type='text'
-                          placeholder=''
-                          onChange={e => onChange(e)}
+                          name="company"
+                          type="text"
+                          placeholder=""
+                          onChange={(e) => onChange(e)}
                           value={company}
                         />
-
                       </div>
                     </div>
                     <div className="col-md-10 col-sm-11 col-12">
@@ -225,14 +221,13 @@ function ContactUs() {
                         </div>
                         <input
                           className={css["control__input"]}
-                          name='email'
-                          type='email'
-                          placeholder='example@gmail.com'
-                          onChange={e => onChange(e)}
+                          name="email"
+                          type="email"
+                          placeholder="example@gmail.com"
+                          onChange={(e) => onChange(e)}
                           value={email}
                           required
                         />
-
                       </div>
                     </div>
                     <div className="col-md-10 col-sm-11 col-12">
@@ -242,14 +237,13 @@ function ContactUs() {
                         </div>
                         <input
                           className={css["control__input"]}
-                          name='subject'
-                          type='text'
-                          placeholder=''
-                          onChange={e => onChange(e)}
+                          name="subject"
+                          type="text"
+                          placeholder=""
+                          onChange={(e) => onChange(e)}
                           value={subject}
                           required
                         />
-
                       </div>
                     </div>
                     <div className="col-md-24">
@@ -259,36 +253,51 @@ function ContactUs() {
                         </div>
                         <textarea
                           className={css["control__textarea"]}
-                          name='message'
-                          cols='30'
-                          rows='10'
-                          placeholder=''
-                          onChange={e => onChange(e)}
+                          name="message"
+                          cols="30"
+                          rows="10"
+                          placeholder=""
+                          onChange={(e) => onChange(e)}
                           value={message}
                         />
-
                       </div>
                     </div>
                     <div className="col-md-24">
-                      <div className={css["control__acceptterms"]}>
+                      {/* {errors.r_acceptterms && (
+                        <div className="d-flex mx-auto">
+                          <p
+                            className={
+                              "d-inline-block w-auto mx-auto " +
+                              css["controlMsg"]
+                            }
+                          >
+                            {errors.r_acceptterms.message}
+                          </p>
+                        </div>
+                      )} */}
+                    </div>
+                    <div className="col-md-24">
+                      <div className={css["control__acceptterms"] + "  mt-3"}>
                         <input
                           className={css["control__checkbox"]}
                           type="checkbox"
-                          id=""
-                          name=""
+                          id="r_acceptterms"
+                          name="r_acceptterms"
                           value=""
-                          onChange={e => onChange(e)}
+                          // {...register("r_acceptterms")}
+                          onChange={(e) => onChange(e)}
                         />
-                        <label htmlFor="r_acceptterms" style={{ marginBottom: '51px' }}></label>
-                        <button className='contact__form__button' htmltype='submit'>
-                            <img src={agreeImg} htmlFor="r_acceptterms" />
-                        </button>
-
+                        <label htmlFor="r_acceptterms"> I AGREE TO TERMS</label>
                       </div>
-
                     </div>
                     <div className="col-md-24">
-                      <div className="btn btn-main my-4">
+                      <div className="d-flex justify-content-center">
+                        <button
+                          className={"btn btn-main mt-2 my-4 " + css["btn"]}
+                          htmltype="submit"
+                        >
+                          SUBMIT
+                        </button>
                       </div>
                     </div>
                   </div>

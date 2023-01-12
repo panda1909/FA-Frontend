@@ -157,15 +157,18 @@
 }
 
 .btn {
+
   border: 0;
   outline: 0;
-  background: darken(#DDDDDD, 3%) !important;
+  background-color: transparent !important;
 
-  &:hover {}
+  &:hover {
+    background-color: darken(#DDDDDD, 5%) !important;
+  }
 
   &:focus,
   &:active {
-    background: darken(#DDDDDD, 5%);
+    background-color: darken(#DDDDDD, 10%) !important;
   }
 }
 
