@@ -1,0 +1,98 @@
+@import "./Styles/style.scss";
+
+.page-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+
+  .page-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0 auto;
+      height: 2px;
+      width: 115%;
+      background-color: $text-color;
+    }
+  }
+}
+
+.contact-imgs-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  margin-top: 20px;
+
+  .page-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0 auto;
+      height: 2px;
+      width: 115%;
+      background-color: $text-color;
+    }
+  }
+}
+.btn-modal {
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  outline: none;
+  padding: 10px 35px;
+  border: 2px solid gray;
+  color: #111;
+  background: white;
+
+  img {
+    height: 50px;
+  }
+}
+
+.btn-close {
+  right: 15px !important;
+  left: auto;
+  top: 15px !important;
+  bottom: auto;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid gray;
+  color: #111;
+  background: white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: red;
+    border: 2px solid red;
+    background: white;
+
+    svg,
+    path {
+      // fill: red;
+    }
+  }
+}

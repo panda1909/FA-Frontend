@@ -1,0 +1,16 @@
+.logo {
+  border: 2px solid transparent;
+  margin: 0 auto;
+  text-align: center;
+
+  &__img {
+    max-height: 70px;
+    object-fit: contain;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  &:hover {
+    border: 2px solid #DDDDDD;
+  }
+}

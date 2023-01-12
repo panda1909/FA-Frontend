@@ -1,0 +1,114 @@
+/**
+ * = Navigation bars
+ */
+@import "./../../../Styles/variables";
+
+.navbar {
+  padding: 20px 0 !important;
+  z-index: 1030;
+
+  .navbar-toggler-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    // X-Large devices (large desktops, 1200px and up)
+    @include media-breakpoint-up(xl) {}
+
+    // Complete styles for main navbar toggler and hamburger menu
+    .navbar-toggler {
+      position: relative;
+      left: 5px;
+      background-color: transparent;
+
+      &.collapsed {
+        background-color: $primary;
+
+        svg {
+          fill: #fff !important;
+        }
+      }
+
+      &:not(.collapsed) {
+        background-color: transparent;
+
+        svg {
+          fill: $primary  !important;
+        }
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .navbar-brand {
+    display: inline-block;
+    text-transform: uppercase;
+
+    img {
+      object-fit: contain;
+      min-width: 110px;
+      height: 25px;
+
+      // Extra Small devices (landscape phones, 376px and up)
+      @include media-breakpoint-up(xs) {
+        min-width: 110px;
+        height: 30px;
+      }
+
+      // Small devices (landscape phones, 576px and up)
+      @include media-breakpoint-up(sm) {
+        min-width: 120px;
+        height: 40px;
+      }
+
+      // Medium devices (tablets, 768px and up)
+      @include media-breakpoint-up(md) {
+        min-width: 150px;
+        height: 40px;
+      }
+
+      // Large devices (desktops, 992px and up)
+      @include media-breakpoint-up(lg) {
+        height: 45px;
+      }
+
+      // X-Large devices (large desktops, 1200px and up)
+      @include media-breakpoint-up(xl) {
+        height: 50px;
+      }
+    }
+
+    &:hover {
+      img {
+        animation: bounceIn 0.5s;
+        transition: all 0.4s cubic-bezier(.8, 1.8, .75, .75);
+      }
+    }
+  }
+
+  .navbar-nav {
+
+    .nav-item {
+      // margin-right: 48px;
+
+      .nav-link {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: var(--text-color);
+        padding: 8px 0;
+        margin-left: 0px;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $primary;
+        }
+      }
+    }
+  }
+}

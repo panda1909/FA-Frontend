@@ -1,0 +1,163 @@
+ // Configuration
+ @import "bootstrap/scss/functions";
+ @import "bootstrap/scss/variables";
+ @import "bootstrap/scss/maps";
+ @import "bootstrap/scss/mixins";
+
+ $font-family-primary: 'Clash Display', sans-serif;
+ $font-family-sec: 'Neue Haas Grotesk Display Pro', sans-serif;
+
+ $container-margins: 30px;
+ $container-margins-xs: 30px;
+ $container-margins-sm: 40px;
+ $container-margins-md: 80px;
+ $container-margins-lg: 100px;
+ $container-margins-xl: 120px;
+ $container-margins-xxl: 120px;
+
+ // Variables
+ //
+ // Variables should follow the `$component-state-property-size` formula for
+ // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+ // Color system 
+ //
+ /// Slightly lighten a color 
+ @function tint($color, $percentage) {
+   @return mix(white, $color, $percentage);
+ }
+
+ /// Slightly darken a color 
+ @function shade($color, $percentage) {
+   @return mix(black, $color, $percentage);
+ }
+
+ $primary: #8200E5;
+
+ // Color scheme
+ $primary: #FE01E4;
+ $primary-active: #9100FF;
+ $primary-hover: #FE01E4;
+ $secondary: #EDC8A6;
+ //  $light : #FCF9F4;
+ $light : #F2F2F2;
+ $dark : #1A0F24;
+ $dark-2 : #1A0F24;
+ $body : #DDDDDD;
+
+ $white : #fff;
+ $white-2 : #E4E4E4;
+ $white-3 : #EAECF0;
+ $text-color : #323232;
+ $pure-white : #fff;
+
+ // Theme colors
+ $theme-colors: (
+   "primary": $primary,
+   "secondary": $secondary,
+   "light": $light,
+   "white": $white
+ );
+
+ // Customize the light and dark text colors for use in our color contrast function.
+ $color-contrast-dark : $dark;
+ $color-contrast-light: $white;
+
+ // Body 
+ $body-bg : $body;
+
+ // Typography 
+ $font-family-sans-serif: $font-family-primary;
+
+ :root {
+   --bs-body-font-family: #{$font-family-primary};
+   --font-family-sec: #{$font-family-sec};
+
+   --primary: #{$primary};
+   --secondary: #{$secondary};
+   --light: #{$light};
+   --dark: #{$dark};
+   --dark-2: #{$dark-2};
+   --dark-3: #{$dark-2};
+   --white: #{$white};
+   --white-2: #{$white-2};
+   --white-3: #{$white-3};
+   --text-color: #{$text-color};
+   --pure-white: #{$pure-white};
+
+   --bs-body-color: #{$text-color};
+   --bs-body-bg: #{$body-bg};
+ }
+
+
+ @media (prefers-color-scheme: light) {}
+
+ /* Dark mode */
+ @media (prefers-color-scheme: dark) {}
+
+ @media (prefers-reduced-motion: no-preference) {
+   //  .App-logo {
+   //    animation: App-logo-spin infinite 20s linear;
+   //  }
+ }
+
+ // Set a specific jump point for requesting color jumps
+ $theme-color-interval: 8%;
+
+ // Paragraphs 
+ $paragraph-margin-bottom: 1rem;
+
+ // Grid breakpoints  
+ $grid-breakpoints: (
+   xxs: 0,
+   xs: 376px,
+   sm: 576px,
+   md: 768px,
+   lg: 992px,
+   xl: 1200px
+ );
+
+ // Grid containers 
+ $container-max-widths: (
+   xxs: 0,
+   xs: 380px,
+   sm: 510px,
+   md: 710px,
+   lg: 960px,
+   xl: 1140px,
+   xxl: 1320px
+ );
+
+ // Grid columns 
+ $grid-columns : 12;
+ $grid-gutter-width: 1.5rem;
+ $grid-row-columns : 6;
+ $grid-columns : 24;
+ $grid-gutter-width: 24px;
+ $grid-row-columns : 6;
+
+ // Container padding  
+ $paragraph-font-size : 1rem;
+ $paragraph-font-weight: 300;
+ $paragraph-line-height: 1.6;
+
+ // Options
+ //
+ // Quickly modify global styling by enabling or disabling optional features.
+
+ $enable-caret: false;
+ $enable-rounded: false;
+ $enable-shadows: false;
+ $enable-gradients: false;
+ $enable-transitions: true;
+ $enable-reduced-motion: true;
+ $enable-smooth-scroll: true;
+ $enable-grid-classes: true;
+ $enable-container-classes: true;
+ $enable-cssgrid: false;
+ $enable-button-pointers: true;
+ $enable-rfs: false;
+ $enable-validation-icons: true;
+ $enable-negative-margins: false;
+ $enable-deprecation-messages: true;
+ $enable-important-utilities: true;
