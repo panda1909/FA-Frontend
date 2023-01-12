@@ -1,6 +1,7 @@
 @import "./Styles/style.scss";
 
 :root {
+  --bs-modal-bg: transparent !important;
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
@@ -66,4 +67,9 @@ body:not(.scrolling) .btn-2,
   bottom: 15px;
   left: 50%;
   transform: translate(-50%, 0);
+}
+
+.modal-content {
+  border: 0px !important;
+  background-color: transparent !important;
 }

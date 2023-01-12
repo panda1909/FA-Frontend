@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
-
-import logo from "./assets/logo.png";
-import modalImg from "./assets/modal.png";
-import "./Styles/style.scss";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
+import logo from "./assets/logo.png";
 import RouterPages from "./RouterPages";
+import "./Styles/style.scss";
 
 function isBlank(link_to, image, is_blank) {
   if (is_blank) {
@@ -64,7 +64,7 @@ function App() {
       .then((resJson) => {
         setimage(
           `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
-            resJson["image"]
+            resJson["pop_up"].image
         );
 
         setTimeout(() => {
@@ -72,6 +72,7 @@ function App() {
         }, 150);
         console.log("exists " + resJson["exists"]);
         console.log("image " + resJson["image"]);
+        console.log("pop_up " + resJson["pop_up"].image);
         console.log("imageimage " + image);
         setlink_to(resJson["link"]);
         setblank(resJson["blank"]);
@@ -81,6 +82,19 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />
       <RouterPages />
 
       <button className="btn-modal" onClick={handleShow}>
