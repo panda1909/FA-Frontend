@@ -113,6 +113,7 @@ function ContactUs() {
 
   const onSubmit = e => {
 
+    console.log(import.meta.env.REACT_APP_BACKEND_API_ROUTE)
 
     e.preventDefault();
     const config = {

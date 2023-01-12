@@ -16,21 +16,19 @@ export default function Landing () {
               data.push({
                 title: "Contact Us",
                 src: `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}`+resJson[i]['image'],
-                position: [0, 0, -5],
+                position: [0, 0, 0],
                 trigger: "."+String.fromCharCode(j),
                 direction: "center",
                 link: resJson[i]['link'],
-                blank: resJson[i]['blank']
               })
             }else{
               data.push({
                 title: "Contact Us",
                 src: `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}`+resJson[i]['image'],
-                position: [0, 0, -10],
+                position: [0, 0, -30],
                 trigger: "."+String.fromCharCode(j),
                 direction: "center",
                 link: resJson[i]['link'],
-                blank: resJson[i]['blank']
               })
             }
           }

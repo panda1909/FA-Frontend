@@ -1,5 +1,6 @@
 import MainNavbar from "../Components/Shared/NavBar/MainNavbar";
 // TODO REMOVE UNNECESSARY IMPORTS
+
 const DefaultLayout = ({ children }) => {
   return (
     <>
