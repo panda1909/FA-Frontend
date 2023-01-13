@@ -35,22 +35,22 @@ function App() {
   const [offset, setOffset] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 
-  window.onscroll = () => {
-    setIsScrolling(true);
-    document.body.classList.remove("noscrolling");
-    document.body.classList.add("scrolling");
-    scrollend();
-  };
+  // window.onscroll = () => {
+  //   setIsScrolling(true);
+  //   document.body.classList.remove("noscrolling");
+  //   document.body.classList.add("scrolling");
+  //   scrollend();
+  // };
 
-  function scrollend() {
-    setTimeout(() => {
-      // if (isScrolling) {}
-      setIsScrolling(false);
-      document.body.classList.remove("scrolling");
-      document.body.classList.add("noscrolling");
-      // console.log("Someone scrolled me!");
-    }, 750);
-  }
+  // function scrollend() {
+  //   setTimeout(() => {
+  //     // if (isScrolling) {}
+  //     setIsScrolling(false);
+  //     document.body.classList.remove("scrolling");
+  //     document.body.classList.add("noscrolling");
+  //     // console.log("Someone scrolled me!");
+  //   }, 750);
+  // }
 
   useEffect(() => {
     // const onScroll = () => setOffset(window.pageYOffset);
@@ -82,24 +82,13 @@ function App() {
 
   return (
     <div className="App">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      <ToastContainer />
       <RouterPages />
 
-      <button className="btn-modal" onClick={handleShow}>
-        <img src={logo} alt="" className="logo" />
-      </button>
+      {show ? (
+        <button className="btn-modal" onClick={handleShow}>
+          <img src={logo} alt="" className="logo" />
+        </button>
+      ) : null}
 
       <Modal show={show} onHide={handleClose} size="lg" centered>
         <Modal.Body className="position-relative p-0">
@@ -119,6 +108,19 @@ function App() {
           </button>
         </Modal.Body>
       </Modal>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />
     </div>
   );
 }

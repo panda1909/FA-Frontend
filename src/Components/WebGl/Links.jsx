@@ -46,12 +46,12 @@ function MyComponent({ slide }) {
         scale={[sprite.scale.x * 3, sprite.scale.y * 0.7]}
         position={slide.position}
         onClick={() => {
-          if(slide.blank){
-            console.log('---IF')
-            window.open(slide.link, '_blank', 'noreferrer');
-          }else{
-            console.log('---else')
-            navigate(slide.link, {replace: false})
+          if (slide.blank) {
+            console.log("---IF");
+            window.open(slide.link, "_blank", "noreferrer");
+          } else {
+            console.log("---else");
+            navigate(slide.link, { replace: false });
             // window.location.replace(slide.link)
           }
         }}
@@ -61,42 +61,45 @@ function MyComponent({ slide }) {
 }
 
 export default function Links() {
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}/menu-items`)
       .then((res) => res.json())
       .then((resJson) => {
-          let data = []
-          let j = 96
-          for(let i = 0; i < resJson.length; i++){
-            j = j+1
-            if(i ==0 ){
-              data.push({
-                title: "Contact Us",
-                src: `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}`+resJson[i]['image'],
-                position: [0, 0, -5],
-                trigger: "."+String.fromCharCode(j),
-                direction: "center",
-                link: resJson[i]['link'],
-                blank: resJson[i]['blank']
-              })
-            }else{
-              data.push({
-                title: "Contact Us",
-                src: `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}`+resJson[i]['image'],
-                position: [0, 0, -10],
-                trigger: "."+String.fromCharCode(j),
-                direction: "center",
-                link: resJson[i]['link'],
-                blank: resJson[i]['blank']
-              })
-            }
-           
+        let data = [];
+        let j = 96;
+        for (let i = 0; i < resJson.length; i++) {
+          j = j + 1;
+          if (i == 0) {
+            data.push({
+              title: "Contact Us",
+              src:
+                `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
+                resJson[i]["image"],
+              position: [0, 0, -5],
+              trigger: "." + String.fromCharCode(j),
+              direction: "center",
+              link: resJson[i]["link"],
+              blank: resJson[i]["blank"],
+            });
+          } else {
+            data.push({
+              title: "Contact Us",
+              src:
+                `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
+                resJson[i]["image"],
+              position: [0, 0, -10],
+              trigger: "." + String.fromCharCode(j),
+              direction: "center",
+              link: resJson[i]["link"],
+              blank: resJson[i]["blank"],
+            });
           }
-          setItems(data)
-    })
-  }, [])
+        }
+        setItems(data);
+      });
+  }, []);
 
   return (
     <>
