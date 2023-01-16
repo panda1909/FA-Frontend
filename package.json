@@ -10,19 +10,21 @@
     "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
-    "three": "^0.147.0",
     "@react-three/drei": "^9.47.1",
     "@react-three/fiber": "^8.9.1",
+    "@rs1/media-player": "^1.2.1",
     "axios": "^1.2.1",
+    "bootstrap": "^5.2.3",
     "env-cmd": "^10.1.0",
     "gsap": "^3.11.3",
     "react": "^18.2.0",
-    "bootstrap": "^5.2.3",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
+    "react-html5video": "^2.5.1",
     "react-redux": "^8.0.5",
     "react-toastify": "^9.1.1",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "three": "^0.147.0"
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"

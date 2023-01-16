@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import Modal from "react-bootstrap/Modal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import "./App.scss";
-import logo from "./assets/logo.png";
-import RouterPages from "./RouterPages";
+import { useEffect, useState } from "react";
+import Modal from "react-bootstrap/Modal";
 import "./Styles/style.scss";
+import "./App.scss";
+
+import RouterPages from "./RouterPages";
+import logo from "./assets/logo.png";
 
 function isBlank(link_to, image, is_blank) {
   if (is_blank) {
@@ -71,17 +71,23 @@ function App() {
       .then((resJson) => {
         setimage(
           `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
-            resJson["pop_up"].image
+            resJson["pop_up"]?.image
         );
+        console.log(resJson["pop_up"]);
 
         setTimeout(() => {
-          setShow(true);
-          setHasPopup(true);
+          if (resJson["pop_up"]?.image == undefined) {
+            setHasPopup(false);
+            setShow(false);
+          } else {
+            setHasPopup(true);
+            setShow(true);
+          }
         }, 150);
         setlink_to(resJson["link"]);
         setblank(resJson["blank"]);
       });
-  }, []);
+  }, [image]);
 
   return (
     <div className="App">
@@ -111,6 +117,7 @@ function App() {
           </button>
         </Modal.Body>
       </Modal>
+
       <ToastContainer
         position="top-right"
         autoClose={5000}
