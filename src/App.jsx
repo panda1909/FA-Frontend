@@ -11,14 +11,19 @@ import "./Styles/style.scss";
 function isBlank(link_to, image, is_blank) {
   if (is_blank) {
     return (
-      <a href={link_to} target="_blank" rel="noopener noreferrer">
-        <img src={image} alt="" className="modal-img" />
+      <a
+        className="d-block w-100"
+        href={link_to}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src={image} alt="" className="modal-img w-100" />
       </a>
     );
   } else {
     return (
-      <a href={link_to}>
-        <img src={image} alt="" className="modal-img" />
+      <a className="d-block w-100" href={link_to}>
+        <img src={image} alt="" className="modal-img w-100" />
       </a>
     );
   }
@@ -31,6 +36,7 @@ function App() {
 
   const [count, setCount] = useState(0);
   const [show, setShow] = useState(false);
+  const [hasPopup, setHasPopup] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [offset, setOffset] = useState(0);
@@ -70,22 +76,18 @@ function App() {
 
         setTimeout(() => {
           setShow(true);
+          setHasPopup(true);
         }, 150);
-        console.log("exists " + resJson["exists"]);
-        console.log("image " + resJson["image"]);
-        console.log("pop_up " + resJson["pop_up"].image);
-        console.log("imageimage " + image);
         setlink_to(resJson["link"]);
         setblank(resJson["blank"]);
       });
   }, []);
-  console.log(isScrolling);
 
   return (
     <div className="App">
       <RouterPages />
 
-      {show ? (
+      {hasPopup ? (
         <button className="btn-modal" onClick={handleShow}>
           <img src={logo} alt="" className="logo" />
         </button>
