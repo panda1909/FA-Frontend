@@ -1,16 +1,14 @@
-// TODO ?
 import { useEffect, useState } from "react";
-import { Button, Navbar } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import logo from "./../NavBar/logo.png";
 import "./NavBar.scss";
 
 function AuthNavbar() {
-  const navigate = useNavigate();
-  const [expand, updateExpanded] = useState(false);
-  const [navColour, updateNavbar] = useState(false);
+  const [expand] = useState(false);
+  const [navColour] = useState(false);
 
   useEffect(() => {}, []);
 

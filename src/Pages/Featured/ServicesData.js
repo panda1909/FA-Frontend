@@ -1,4 +1,3 @@
-// TODO ?
 
 import icon1 from './img/logo1.png';
 import icon2 from './img/logo2.png';

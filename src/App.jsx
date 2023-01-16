@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import "./App.scss";
 import logo from "./assets/logo.png";
 import RouterPages from "./RouterPages";

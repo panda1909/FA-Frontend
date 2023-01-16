@@ -1,10 +1,9 @@
-import MainNavbar from "../Components/Shared/NavBar/MainNavbar";
-// TODO REMOVE UNNECESSARY IMPORTS
+// import MainNavbar from "../Components/Shared/NavBar/MainNavbar";
 
 const DefaultLayout = ({ children }) => {
   return (
     <>
-      <main style={{marginTop: 120}}>{children}</main>
+      <main style={{ marginTop: 120 }}>{children}</main>
     </>
   );
 };

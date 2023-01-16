@@ -45,6 +45,8 @@
     "yup": "^0.32.11"
   },
   "react-dotenv": {
-    "whitelist": ["REACT_APP_BACKEND_API_ROUTE"]
+    "whitelist": [
+      "REACT_APP_BACKEND_API_ROUTE"
+    ]
   }
 }
