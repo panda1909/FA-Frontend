@@ -1,6 +1,6 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Modal from "react-bootstrap/Modal";
 import "./Styles/style.scss";
 import "./App.scss";
@@ -12,18 +12,18 @@ function isBlank(link_to, image, is_blank) {
   if (is_blank) {
     return (
       <a
-        className="d-block w-100"
+        className='d-block w-100'
         href={link_to}
-        target="_blank"
-        rel="noopener noreferrer"
+        target='_blank'
+        rel='noopener noreferrer'
       >
-        <img src={image} alt="" className="modal-img w-100" />
+        <img src={image} alt='' className='modal-img w-100' />
       </a>
     );
   } else {
     return (
-      <a className="d-block w-100" href={link_to}>
-        <img src={image} alt="" className="modal-img w-100" />
+      <a className='d-block w-100' href={link_to}>
+        <img src={image} alt='' className='modal-img w-100' />
       </a>
     );
   }
@@ -33,12 +33,20 @@ function App() {
   const [image, setimage] = useState([]);
   const [link_to, setlink_to] = useState([]);
   const [is_blank, setblank] = useState([]);
-
+  const btnRef = useRef();
+  const modelRef = useRef();
+  const closeBtnRef = useRef();
   const [count, setCount] = useState(0);
   const [show, setShow] = useState(false);
   const [hasPopup, setHasPopup] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    modelRef.current.style.display = "none";
+    document.body.style.overflowY = "scroll";
+  };
+  const handleShow = () => {
+    modelRef.current.style.display = "block";
+    document.body.style.overflow = "hidden";
+  };
   const [offset, setOffset] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 
@@ -77,11 +85,21 @@ function App() {
 
         setTimeout(() => {
           if (resJson["pop_up"]?.image == undefined) {
-            setHasPopup(false);
-            setShow(false);
+            if (btnRef.current) btnRef.current.style.display = "none";
+            if (modelRef.current) modelRef.current.style.display = "none";
+            if (closeBtnRef.current) closeBtnRef.current.style.opacity = 0;
+
+            // setHasPopup(false);
+            // setShow(false);
           } else {
-            setHasPopup(true);
-            setShow(true);
+            btnRef.current.style.display = "block";
+            modelRef.current.style.display = "block";
+            closeBtnRef.current.style.opacity = 1;
+            //lock scroll
+            document.body.style.overflow = "hidden";
+           
+            // setHasPopup(true);
+            // setShow(true);
           }
         }, 150);
         setlink_to(resJson["link"]);
@@ -90,36 +108,63 @@ function App() {
   }, [image]);
 
   return (
-    <div className="App">
+    <div className='App'>
       <RouterPages />
 
-      {hasPopup ? (
-        <button className="btn-modal" onClick={handleShow}>
-          <img src={logo} alt="" className="logo" />
-        </button>
-      ) : null}
+      <button ref={btnRef} className='btn-modal' onClick={handleShow}>
+        <img src={logo} alt='' className='logo' />
+      </button>
 
-      <Modal show={show} onHide={handleClose} size="lg" centered>
-        <Modal.Body className="position-relative p-0">
+      {/* <Modal show={show} onHide={handleClose} size='lg' centered>
+        <Modal.Body className='position-relative p-0'>
           {isBlank(link_to, image, is_blank)}
 
-          <button className="btn-close position-absolute" onClick={handleClose}>
+          <button className='btn-close position-absolute' onClick={handleClose}>
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-x-lg"
-              viewBox="0 0 16 16"
+              xmlns='http://www.w3.org/2000/svg'
+              width='16'
+              height='16'
+              fill='currentColor'
+              className='bi bi-x-lg'
+              viewBox='0 0 16 16'
             >
-              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+              <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' />
             </svg>
           </button>
         </Modal.Body>
-      </Modal>
+      </Modal> */}
+
+      <div
+        className=' p-0'
+        style={{
+          position: "fixed",
+          top: "40%",
+          left: "40%",
+        }}
+        ref={modelRef}
+      >
+        {isBlank(link_to, image, is_blank)}
+
+        <button
+          ref={closeBtnRef}
+          className='btn-close  position-absolute'
+          onClick={handleClose}
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='16'
+            height='16'
+            fill='currentColor'
+            className='bi bi-x-lg'
+            viewBox='0 0 16 16'
+          >
+            <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' />
+          </svg>
+        </button>
+      </div>
 
       <ToastContainer
-        position="top-right"
+        position='top-right'
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -128,7 +173,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme='light'
       />
       <ToastContainer />
     </div>

@@ -15,21 +15,23 @@ function MyComponent({ slide }) {
   const slideRef = React.useRef();
   useEffect(() => {
     const ctx = gsap.context(() => {
+      let lastScroll = 0;
       // Target the two specific elements we have forwarded refs to
       gsap.to(slideRef.current?.position, {
         scrollTrigger: {
           trigger: slide.trigger,
           scrub: 1.5,
+          invalidateOnRefresh: true,
         },
         x: 0,
         z: 10,
-
+        invalidateOnRefresh: true,
         duration: 1,
       });
     });
 
     return () => ctx.revert();
-  }, [slide.direction, slide.trigger]);
+  }, []);
 
   return (
     <mesh
