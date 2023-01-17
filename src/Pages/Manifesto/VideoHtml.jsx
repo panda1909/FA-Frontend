@@ -14,7 +14,7 @@ function VideoHtml({ src }) {
   }, [src]);
 
   return (
-    <>
+    <div className={css.videowrapper}>
       <Video
         // autoPlay
         loop
@@ -32,7 +32,7 @@ function VideoHtml({ src }) {
         <source src={src} height="450" type="video/mp4" />
         Your browser does not support the video tag.
       </video> */}
-    </>
+    </div>
   );
 }
 

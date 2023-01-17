@@ -1,5 +1,9 @@
 .video {
-  width: auto;
-  max-width: 100%;
-  max-width: 700px;
+  width: auto !important;
+  max-width: 100% !important;
+  // max-height: 400px;
+}
+
+.videowrapper {
+  // max-height: 400px;
 }

@@ -96,42 +96,13 @@ function Manifesto() {
         <section className={css.section}>
           <div className="container">
             <PageHeader />
-            {loadingData && <button>loadingData</button>}
-            {error && <button>error</button>}
-
-            {!loadingData && error ? (
-              <button>loadded</button>
-            ) : (
-              <button>loadingData</button>
-            )}
 
             <div className="row align-items-center">
               <div className="col-xl-24 col-24">
                 <div className="d-flex align-items-center justify-content-center">
                   <div className={"text-center " + css.card}>
                     {video != null ? <VideoHtml src={video} /> : null}
-                    {/* <Video
-                      // autoPlay
-                      loop
-                      muted
-                      controls={[
-                        "PlayPause",
-                        "Seek",
-                        "Time",
-                        "Volume",
-                        "Fullscreen",
-                      ]}
-                      // poster="http://sourceposter.jpg"
-                      onCanPlayThrough={() => {
-                        // Do stuff
-                      }}
-                    >
-                      <source src={video} type="video/mp4" />
-                    </Video>
-                    <video className={css["video"]} autoPlay controls>
-                      <source src={video} height="450" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video> */}
+
                     <br />
                     <br />
                     <p className="">{content}</p>
