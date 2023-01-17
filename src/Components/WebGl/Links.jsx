@@ -48,6 +48,9 @@ function MyComponent({ slide }) {
         scale={[sprite.scale.x * 3, sprite.scale.y * 0.7]}
         position={slide.position}
         onClick={() => {
+          if (slideRef.current.position.z < -5) {
+            return;
+          }
           if (slide.blank) {
             console.log("---IF");
             window.open(slide.link, "_blank", "noreferrer");
