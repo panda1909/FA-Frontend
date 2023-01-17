@@ -17,13 +17,29 @@ function isBlank(link_to, image, is_blank) {
         target='_blank'
         rel='noopener noreferrer'
       >
-        <img src={image} alt='' className='modal-img w-100' />
+        <img
+          style={{
+            width: "70vw",
+            objectFit: "contain",
+          }}
+          src={image}
+          alt=''
+          className='modal-img '
+        />
       </a>
     );
   } else {
     return (
       <a className='d-block w-100' href={link_to}>
-        <img src={image} alt='' className='modal-img w-100' />
+        <img
+          style={{
+            width: "70vw",
+            objectFit: "contain",
+          }}
+          src={image}
+          alt=''
+          className='modal-img'
+        />
       </a>
     );
   }
@@ -47,7 +63,7 @@ function App() {
     document.body.style.overflow = "auto";
   };
   const handleShow = () => {
-    modelRef.current.style.display = "block";
+    modelRef.current.style.display = "flex";
     document.body.style.overflow = "hidden";
   };
   const [offset, setOffset] = useState(0);
@@ -97,7 +113,7 @@ function App() {
           // setShow(false);
         } else {
           btnRef.current.style.display = "block";
-          modelRef.current.style.display = "block";
+          modelRef.current.style.display = "flex";
           closeBtnRef.current.style.opacity = 1;
           document.body.style.overflow = "hidden";
         }
@@ -137,30 +153,38 @@ function App() {
       <div
         className=' p-0'
         style={{
+          width: "100%",
+          height: "100%",
           position: "fixed",
-          top: "40%",
-          left: "40%",
+          top: "0%",
+          margin: "auto",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
         }}
         ref={modelRef}
       >
-        {isBlank(link_to, image, is_blank)}
+        <div style={{ position: "relative" }}>
+          {isBlank(link_to, image, is_blank)}
 
-        <button
-          ref={closeBtnRef}
-          className='btn-close  position-absolute'
-          onClick={handleClose}
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='16'
-            height='16'
-            fill='currentColor'
-            className='bi bi-x-lg'
-            viewBox='0 0 16 16'
+          <button
+            ref={closeBtnRef}
+            className='btn-close position-absolute'
+            onClick={handleClose}
           >
-            <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' />
-          </svg>
-        </button>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='16'
+              height='16'
+              fill='currentColor'
+              className='bi bi-x-lg'
+              viewBox='0 0 16 16'
+            >
+              <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z' />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <ToastContainer
