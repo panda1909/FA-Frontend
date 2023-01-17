@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Modal from "react-bootstrap/Modal";
 import "./Styles/style.scss";
 import "./App.scss";
-
+import { gsap } from "gsap";
 import RouterPages from "./RouterPages";
 import logo from "./assets/logo.png";
 
@@ -39,9 +39,12 @@ function App() {
   const [count, setCount] = useState(0);
   const [show, setShow] = useState(false);
   const [hasPopup, setHasPopup] = useState(false);
+  const avoidScroll = () => {
+    window.scrollTo(0, 0);
+  };
   const handleClose = () => {
     modelRef.current.style.display = "none";
-    document.body.style.overflowY = "scroll";
+    document.body.style.overflow = "auto";
   };
   const handleShow = () => {
     modelRef.current.style.display = "block";
@@ -83,25 +86,22 @@ function App() {
         );
         console.log(resJson["pop_up"]);
 
-        setTimeout(() => {
-          if (resJson["pop_up"]?.image == undefined) {
-            if (btnRef.current) btnRef.current.style.display = "none";
-            if (modelRef.current) modelRef.current.style.display = "none";
-            if (closeBtnRef.current) closeBtnRef.current.style.opacity = 0;
+        // setTimeout(() => {
+        if (resJson["pop_up"]?.image == undefined) {
+          if (btnRef.current) btnRef.current.style.display = "none";
+          if (modelRef.current) modelRef.current.style.display = "none";
+          if (closeBtnRef.current) closeBtnRef.current.style.opacity = 0;
+          document.body.style.overflow = "auto";
 
-            // setHasPopup(false);
-            // setShow(false);
-          } else {
-            btnRef.current.style.display = "block";
-            modelRef.current.style.display = "block";
-            closeBtnRef.current.style.opacity = 1;
-            //lock scroll
-            document.body.style.overflow = "hidden";
-           
-            // setHasPopup(true);
-            // setShow(true);
-          }
-        }, 150);
+          // setHasPopup(false);
+          // setShow(false);
+        } else {
+          btnRef.current.style.display = "block";
+          modelRef.current.style.display = "block";
+          closeBtnRef.current.style.opacity = 1;
+          document.body.style.overflow = "hidden";
+        }
+        // }, 150);
         setlink_to(resJson["link"]);
         setblank(resJson["blank"]);
       });
