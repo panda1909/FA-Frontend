@@ -127,7 +127,14 @@ function App() {
     <div className='App'>
       <RouterPages />
 
-      <button ref={btnRef} className='btn-modal' onClick={handleShow}>
+      <button
+        ref={btnRef}
+        style={{
+          display: "none",
+        }}
+        className='btn-modal'
+        onClick={handleShow}
+      >
         <img src={logo} alt='' className='logo' />
       </button>
 
@@ -172,6 +179,7 @@ function App() {
             ref={closeBtnRef}
             className='btn-close position-absolute'
             onClick={handleClose}
+            style={{ opacity: 0 }}
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'

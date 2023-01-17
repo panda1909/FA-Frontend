@@ -73,6 +73,7 @@ export default function Links() {
       .then((res) => res.json())
       .then((resJson) => {
         let data = [];
+        let initial = 0;
         let j = 96;
         for (let i = 0; i < resJson.length; i++) {
           j = j + 1;
@@ -82,7 +83,7 @@ export default function Links() {
               src:
                 `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
                 resJson[i]["image"],
-              position: [0, 0, -5],
+              position: [0, 0, 2],
               trigger: "." + String.fromCharCode(j),
               direction: "center",
               link: resJson[i]["link"],
@@ -94,13 +95,14 @@ export default function Links() {
               src:
                 `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
                 resJson[i]["image"],
-              position: [0, 0, -10],
+              position: [0, 0, initial - 5],
               trigger: "." + String.fromCharCode(j),
               direction: "center",
               link: resJson[i]["link"],
               blank: resJson[i]["blank"],
             });
           }
+          initial = initial - 5;
         }
         setItems(data);
       });
