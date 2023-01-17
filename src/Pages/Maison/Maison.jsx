@@ -10,17 +10,13 @@ function Maison() {
           <div className="container">
             <div className="row align-items-center">
               <div className="col-md-24">
-                <div className="page-header">
-                </div>
+                <div className="page-header"></div>
               </div>
             </div>
 
             <div className="row align-items-center">
               <div className="col-md-24 col-24">
                 <div className="d-flex align-items-center justify-content-center">
-                  <br />
-                  <br />
-                  <br />
                   <br />
                   <br />
                   <br />

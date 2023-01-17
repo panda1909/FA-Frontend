@@ -3,9 +3,6 @@ import HeroHome from "./Components/Hero/HeroHome";
 import title from "./img/Fine-Arts.png";
 import logo from "./img/logo.png";
 
-
-
-
 function HomePage() {
   return (
     <DefaultLayout className="">
@@ -17,7 +14,9 @@ function HomePage() {
         </div>
       </div>
 
-      <HeroHome />
+      <div className="container">
+        <HeroHome />
+      </div>
     </DefaultLayout>
   );
 }
