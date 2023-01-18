@@ -15,21 +15,23 @@ function MyComponent({ slide }) {
   const slideRef = React.useRef();
   useEffect(() => {
     const ctx = gsap.context(() => {
+      let lastScroll = 0;
       // Target the two specific elements we have forwarded refs to
       gsap.to(slideRef.current?.position, {
         scrollTrigger: {
           trigger: slide.trigger,
           scrub: 1.5,
+          invalidateOnRefresh: true,
         },
         x: 0,
         z: 10,
-
+        invalidateOnRefresh: true,
         duration: 1,
       });
     });
 
     return () => ctx.revert();
-  }, [slide.direction, slide.trigger]);
+  }, []);
 
   return (
     <mesh
@@ -46,6 +48,9 @@ function MyComponent({ slide }) {
         scale={[sprite.scale.x * 3, sprite.scale.y * 0.7]}
         position={slide.position}
         onClick={() => {
+          if (slideRef.current.position.z < -5) {
+            return;
+          }
           if (slide.blank) {
             console.log("---IF");
             window.open(slide.link, "_blank", "noreferrer");
@@ -68,6 +73,7 @@ export default function Links() {
       .then((res) => res.json())
       .then((resJson) => {
         let data = [];
+        let initial = 0;
         let j = 96;
         for (let i = 0; i < resJson.length; i++) {
           j = j + 1;
@@ -77,7 +83,7 @@ export default function Links() {
               src:
                 `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
                 resJson[i]["image"],
-              position: [0, 0, -5],
+              position: [0, 0, 2],
               trigger: "." + String.fromCharCode(j),
               direction: "center",
               link: resJson[i]["link"],
@@ -89,13 +95,14 @@ export default function Links() {
               src:
                 `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
                 resJson[i]["image"],
-              position: [0, 0, -10],
+              position: [0, 0, initial - 5],
               trigger: "." + String.fromCharCode(j),
               direction: "center",
               link: resJson[i]["link"],
               blank: resJson[i]["blank"],
             });
           }
+          initial = initial - 5;
         }
         setItems(data);
       });

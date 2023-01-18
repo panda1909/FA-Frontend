@@ -9,7 +9,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #DDDDDD;
+  background-color: #dddddd;
 
   min-height: 100vh;
   font-synthesis: none;
@@ -17,6 +17,26 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+// Comment this to show scrollbar
+::-webkit-scrollbar {
+  color: transparent;
+  width: 0;
+}
+::-webkit-scrollbar-thumb {
+  width: 0;
+  background-color: transparent;
+}
+
+::-ms-thumb {
+  width: 0;
+  color: transparent;
+}
+
+::-ms-track {
+  width: 0;
+  background-color: transparent;
 }
 
 a {
@@ -78,6 +98,7 @@ body:not(.scrolling) .btn-2,
   padding: 15px;
   border: 1px solid gray;
 }
+
 
 .rh5v-DefaultPlayer_video {
   width: 100%;
