@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import NavItems from "../../Components/WebGl/Index";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
+const initialNavLink = {
+  title: "Contact Us",
+  src: "/directedbyal2.png",
+  position: [0, 0, 2],
+  trigger: ".a",
+  direction: "center",
+  link: "https://www.google.com",
+  blank: true,
+};
 
 export default function Landing() {
   const [items, setItems] = useState([]);
@@ -34,33 +43,14 @@ export default function Landing() {
     fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}/menu-items`)
       .then((res) => res.json())
       .then((resJson) => {
-        let data = [];
-        let j = 96;
+        let data = [initialNavLink];
+        let j = 97;
         for (let i = 0; i < resJson.length; i++) {
           j = j + 1;
-          if (i == 0) {
-            data.push({
-              title: "Contact Us",
-              src:
-                `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
-                resJson[i]["image"],
-              position: [0, 0, 0],
-              trigger: "." + String.fromCharCode(j),
-              direction: "center",
-              link: resJson[i]["link"],
-            });
-          } else {
-            data.push({
-              title: "Contact Us",
-              src:
-                `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
-                resJson[i]["image"],
-              position: [0, 0, -30],
-              trigger: "." + String.fromCharCode(j),
-              direction: "center",
-              link: resJson[i]["link"],
-            });
-          }
+
+          data.push({
+            trigger: "." + String.fromCharCode(j),
+          });
         }
         setItems(data);
       });
@@ -81,7 +71,7 @@ export default function Landing() {
         return (
           <section
             key={index}
-            style={{ height: item.first ? "10vh" : "50vh" }}
+            style={{ height: "50vh" }}
             className={item.trigger.substring(1)}
             data-scroll-section
           ></section>

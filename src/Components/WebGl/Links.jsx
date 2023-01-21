@@ -25,7 +25,6 @@ function MyComponent({ slide }) {
         },
         x: 0,
         z: 10,
-        invalidateOnRefresh: true,
         duration: 1,
       });
     });
@@ -65,6 +64,16 @@ function MyComponent({ slide }) {
   );
 }
 
+const initialNavLink = {
+  title: "Contact Us",
+  src: "/directedbyal2.png",
+  position: [0, 0, 2],
+  trigger: ".a",
+  direction: "center",
+  link: "https://www.google.com",
+  blank: true,
+};
+
 export default function Links() {
   const [items, setItems] = useState([]);
 
@@ -72,42 +81,33 @@ export default function Links() {
     fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}/menu-items`)
       .then((res) => res.json())
       .then((resJson) => {
-        let data = [];
-        let initial = 0;
-        let j = 96;
+        let data = [initialNavLink];
+        let initial = -76;
+        let j = 97;
         for (let i = 0; i < resJson.length; i++) {
           j = j + 1;
-          if (i == 0) {
-            data.push({
-              title: "Contact Us",
-              src:
-                `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
-                resJson[i]["image"],
-              position: [0, 0, 2],
-              trigger: "." + String.fromCharCode(j),
-              direction: "center",
-              link: resJson[i]["link"],
-              blank: resJson[i]["blank"],
-            });
-          } else {
-            data.push({
-              title: "Contact Us",
-              src:
-                `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
-                resJson[i]["image"],
-              position: [0, 0, initial - 5],
-              trigger: "." + String.fromCharCode(j),
-              direction: "center",
-              link: resJson[i]["link"],
-              blank: resJson[i]["blank"],
-            });
-          }
+
+          data.push({
+            title: "Contact Us",
+            src:
+              `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
+              resJson[i]["image"],
+            position: [0, 0, initial],
+            trigger: "." + String.fromCharCode(j),
+            direction: "center",
+            link: resJson[i]["link"],
+            blank: resJson[i]["blank"],
+          });
+
           initial = initial - 5;
         }
         setItems(data);
       });
   }, []);
 
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
   return (
     <>
       {items.map((item, index) => {
