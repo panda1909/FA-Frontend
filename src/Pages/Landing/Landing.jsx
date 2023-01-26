@@ -25,10 +25,14 @@ export default function Landing() {
     window.addEventListener("scroll", function () {
       //css to hide buttons using gsap
       //scrolling
+
+      //fineart position at -50, to hide from screen
       gsap.to(fineArtsRef.current, {
         y: -50,
         duration: 0.2,
       });
+
+      //maison position at 50, to hide from screen
       gsap.to(masionRef.current, {
         y: 50,
         duration: 0.2,
@@ -39,10 +43,14 @@ export default function Landing() {
       timeout = setTimeout(function () {
         //css to show buttons
         //not scrolling
+
+        //fineart position at 20, to show on screen
         gsap.to(fineArtsRef.current, {
           y: 20,
           duration: 0.3,
         });
+
+        //maison position at -5, to show on screen
         gsap.to(masionRef.current, {
           y: -5,
           duration: 0.3,
