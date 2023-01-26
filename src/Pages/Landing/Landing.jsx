@@ -27,11 +27,11 @@ export default function Landing() {
       //scrolling
       gsap.to(fineArtsRef.current, {
         y: -50,
-        duration: 0.3,
+        duration: 0.2,
       });
       gsap.to(masionRef.current, {
-        y: window.innerHeight + 50,
-        duration: 0.3,
+        y: 50,
+        duration: 0.2,
       });
 
       clearTimeout(timeout);
@@ -41,11 +41,11 @@ export default function Landing() {
         //not scrolling
         gsap.to(fineArtsRef.current, {
           y: 20,
-          duration: 0.4,
+          duration: 0.3,
         });
         gsap.to(masionRef.current, {
           y: -5,
-          duration: 0.4,
+          duration: 0.3,
         });
       }, 550);
     });
