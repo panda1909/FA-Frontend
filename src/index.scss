@@ -69,24 +69,34 @@ body:not(.scrolling) .btn-2,
   display: block !important;
 }
 
+.fa-btn-container {
+  position: fixed !important;
+  top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.maison-btn-container {
+  position: fixed !important;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn-1 {
   font-weight: 600;
   color: #000;
   text-decoration: none;
-  position: fixed !important;
-  top: 15px;
-  left: 50%;
-  transform: translate(-50%, 0);
 }
 
 .btn-2 {
   font-weight: 600;
   color: #000;
   text-decoration: none;
-  position: fixed !important;
-  bottom: 15px;
-  left: 50%;
-  transform: translate(-50%, 0);
 }
 
 .modal-content {
@@ -98,7 +108,6 @@ body:not(.scrolling) .btn-2,
   padding: 15px;
   border: 1px solid gray;
 }
-
 
 .rh5v-DefaultPlayer_video {
   width: 100%;

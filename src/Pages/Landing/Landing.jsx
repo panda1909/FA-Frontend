@@ -24,16 +24,30 @@ export default function Landing() {
   useEffect(() => {
     window.addEventListener("scroll", function () {
       //css to hide buttons using gsap
-      gsap.to(masionRef.current, { opacity: 0, duration: 0.1 });
-      gsap.to(fineArtsRef.current, { opacity: 0, duration: 0.1 });
+      //scrolling
+      gsap.to(fineArtsRef.current, {
+        y: -50,
+        duration: 0.3,
+      });
+      gsap.to(masionRef.current, {
+        y: window.innerHeight + 50,
+        duration: 0.3,
+      });
 
       clearTimeout(timeout);
 
       timeout = setTimeout(function () {
         //css to show buttons
-        gsap.to(masionRef.current, { opacity: 1, duration: 0.35 });
-        gsap.to(fineArtsRef.current, { opacity: 1, duration: 0.35 });
-      }, 450);
+        //not scrolling
+        gsap.to(fineArtsRef.current, {
+          y: 20,
+          duration: 0.3,
+        });
+        gsap.to(masionRef.current, {
+          y: 0,
+          duration: 0.3,
+        });
+      }, 550);
     });
   });
 
@@ -59,13 +73,16 @@ export default function Landing() {
   return (
     <div data-scroll-container style={{ position: "relative" }}>
       <NavItems />
-
-      <Link to='/fine-arts' className='btn btn-link btn-1' ref={fineArtsRef}>
-        FINE ARTS
-      </Link>
-      <Link to='/maison' className='btn btn-link btn-2' ref={masionRef}>
-        MAISON
-      </Link>
+      <div className='fa-btn-container'>
+        <Link to='/fine-arts' className='btn btn-link btn-1' ref={fineArtsRef}>
+          FINE ARTS
+        </Link>
+      </div>
+      <div className='maison-btn-container'>
+        <Link to='/maison' className='btn btn-link btn-2' ref={masionRef}>
+          MAISON
+        </Link>
+      </div>
 
       {items.map((item, index) => {
         return (
