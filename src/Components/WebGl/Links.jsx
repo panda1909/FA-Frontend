@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import * as THREE from "three";
-//import { Sprite } from "three/examples/jsm/objects/Sprite";
+import GifLoader from "three-gif-loader";
 import { Sprite } from "three";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
@@ -9,13 +9,36 @@ gsap.registerPlugin(ScrollTrigger);
 
 function MyComponent({ slide }) {
   const navigate = useNavigate();
+  const loader = new GifLoader();
+  const tryTexture = loader.load(slide.src);
   const spriteMap = new THREE.TextureLoader().load(slide.src);
   const spriteMaterial = new THREE.SpriteMaterial({ map: spriteMap });
   const sprite = new Sprite(spriteMaterial);
   const slideRef = React.useRef();
+
+  const handleClick = () => {
+    if (slideRef.current.position.z < -5) {
+      return;
+    }
+    if (slide.blank) {
+      console.log("---IF");
+      window.open(slide.link, "_blank", "noreferrer");
+    } else {
+      console.log("---else");
+      navigate(slide.link, { replace: false });
+    }
+  };
+
+  const onHover = () => {
+    document.body.style.cursor = "pointer";
+  };
+
+  const onHoverOut = () => {
+    document.body.style.cursor = "default";
+  };
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      let lastScroll = 0;
       // Target the two specific elements we have forwarded refs to
       gsap.to(slideRef.current?.position, {
         scrollTrigger: {
@@ -34,32 +57,23 @@ function MyComponent({ slide }) {
 
   return (
     <mesh
-      onPointerEnter={() => {
-        document.body.style.cursor = "pointer";
-      }}
-      onPointerLeave={() => {
-        document.body.style.cursor = "default";
-      }}
+      onPointerEnter={onHover}
+      onPointerLeave={onHoverOut}
+      onClick={handleClick}
+      position={slide.position}
+      ref={slideRef}
     >
-      <primitive
-        ref={slideRef}
-        object={sprite}
-        scale={[sprite.scale.x * 3, sprite.scale.y * 0.7]}
-        position={slide.position}
-        onClick={() => {
-          if (slideRef.current.position.z < -5) {
-            return;
-          }
-          if (slide.blank) {
-            console.log("---IF");
-            window.open(slide.link, "_blank", "noreferrer");
-          } else {
-            console.log("---else");
-            navigate(slide.link, { replace: false });
-            // window.location.replace(slide.link)
-          }
-        }}
-      />
+      {slide.isGIF ? (
+        <>
+          <planeGeometry args={[4, 3]} />
+          <meshBasicMaterial map={tryTexture} />
+        </>
+      ) : (
+        <primitive
+          object={sprite}
+          scale={[sprite.scale.x * 3, sprite.scale.y * 0.7]}
+        />
+      )}
     </mesh>
   );
 }
@@ -72,6 +86,7 @@ const initialNavLink = {
   direction: "center",
   link: "https://www.google.com",
   blank: true,
+  isGIF: false,
 };
 
 export default function Links() {
@@ -97,6 +112,7 @@ export default function Links() {
             direction: "center",
             link: resJson[i]["link"],
             blank: resJson[i]["blank"],
+            isGIF: resJson[i]["isgif"],
           });
 
           initial = initial - 5;
