@@ -97,7 +97,7 @@ export default function Links() {
       .then((res) => res.json())
       .then((resJson) => {
         let data = [initialNavLink];
-        let initial = -76;
+        let initial = -6;
         let j = 97;
         for (let i = 0; i < resJson.length; i++) {
           j = j + 1;

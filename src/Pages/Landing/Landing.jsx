@@ -96,7 +96,7 @@ export default function Landing() {
         return (
           <section
             key={index}
-            style={{ height: "50vh" }}
+            style={{ height: "30vh" }}
             className={item.trigger.substring(1)}
             data-scroll-section
           ></section>

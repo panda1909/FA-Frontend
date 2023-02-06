@@ -13,7 +13,7 @@ export default function Index() {
         left: 0,
       }}
     >
-      <Canvas camera={{ fov: 75, near: 0.1, far: 80, position: [0, 0, 5] }}>
+      <Canvas camera={{ fov: 75, near: 0.1, far: 9, position: [0, 0, 5] }}>
         <ambientLight intensity={1} color={"#ffffff"} />
 
         <Links />
