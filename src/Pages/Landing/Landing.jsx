@@ -19,7 +19,7 @@ export default function Landing() {
   let timeout;
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [items]);
+  }, [items, masionRef]);
 
   useEffect(() => {
     window.addEventListener("scroll", function () {

@@ -29,6 +29,10 @@ function MyComponent({ slide }) {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [navigate]);
+
   const onHover = () => {
     document.body.style.cursor = "pointer";
   };
@@ -112,7 +116,7 @@ export default function Links() {
             direction: "center",
             link: resJson[i]["link"],
             blank: resJson[i]["blank"],
-            isGIF: resJson[i]["isgif"],
+            isGIF: resJson[i]["isGIF"],
           });
 
           initial = initial - 5;
