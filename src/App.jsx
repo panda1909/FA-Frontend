@@ -9,11 +9,21 @@ import RouterPages from "./RouterPages";
 import logo from "./assets/logo.png";
 
 function isBlank(link_to, image, is_blank) {
-  console.log(link_to, '----T')
+  console.log(link_to, "----T");
   if (is_blank) {
     return (
-      <a className='d-block w-100' href={link_to} target='_blank' rel='noopener noreferrer'>
-        <img style={{ width: "70vw", objectFit: "contain",}} src={image} alt='' className='modal-img' />
+      <a
+        className='d-block w-100'
+        href={link_to}
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <img
+          style={{ width: "70vw", objectFit: "contain" }}
+          src={image}
+          alt=''
+          className='modal-img'
+        />
       </a>
     );
   } else {
@@ -88,7 +98,7 @@ function App() {
           `${import.meta.env.VITE_REACT_APP_BACKEND_API_ROUTE}` +
             resJson["pop_up"]?.image
         );
-        console.log(resJson, '----A')
+        console.log(resJson, "----A");
         setlink_to(resJson["pop_up"]?.link);
         setblank(resJson["pop_up"]?.blank);
         // setTimeout(() => {
@@ -158,7 +168,6 @@ function App() {
         }}
         ref={modelRef}
       >
-      
         <div style={{ position: "relative" }}>
           {isBlank(link_to, image, is_blank)}
 

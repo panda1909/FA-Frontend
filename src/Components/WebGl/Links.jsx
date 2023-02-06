@@ -5,10 +5,13 @@ import { Sprite } from "three";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
 import { useNavigate } from "react-router-dom";
+import { Html, Center } from "@react-three/drei";
+
 gsap.registerPlugin(ScrollTrigger);
 
 function MyComponent({ slide }) {
   const navigate = useNavigate();
+
   const loader = new GifLoader();
   const tryTexture = loader.load(slide.src);
   const spriteMap = new THREE.TextureLoader().load(slide.src);
@@ -60,25 +63,27 @@ function MyComponent({ slide }) {
   }, []);
 
   return (
-    <mesh
-      onPointerEnter={onHover}
-      onPointerLeave={onHoverOut}
+    <group
       onClick={handleClick}
+      onPointerOver={onHover}
+      onPointerOut={onHoverOut}
       position={slide.position}
       ref={slideRef}
     >
-      {slide.isGIF ? (
-        <>
-          <planeGeometry args={[4, 3]} />
-          <meshBasicMaterial map={tryTexture} />
-        </>
-      ) : (
-        <primitive
-          object={sprite}
-          scale={[sprite.scale.x * 3, sprite.scale.y * 0.7]}
-        />
-      )}
-    </mesh>
+      <mesh>
+        {slide.isGIF ? (
+          <>
+            <planeGeometry args={[4, 3]} />
+            <meshBasicMaterial map={tryTexture} />
+          </>
+        ) : (
+          <primitive
+            object={sprite}
+            scale={[sprite.scale.x * 3, sprite.scale.y * 0.7]}
+          />
+        )}
+      </mesh>
+    </group>
   );
 }
 
@@ -101,7 +106,7 @@ export default function Links() {
       .then((res) => res.json())
       .then((resJson) => {
         let data = [initialNavLink];
-        let initial = -6;
+        let initial = -7;
         let j = 97;
         for (let i = 0; i < resJson.length; i++) {
           j = j + 1;

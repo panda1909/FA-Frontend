@@ -11,9 +11,10 @@ export default function Index() {
         position: "sticky",
         top: 0,
         left: 0,
+        zIndex: 100,
       }}
     >
-      <Canvas camera={{ fov: 75, near: 0.1, far: 9, position: [0, 0, 5] }}>
+      <Canvas camera={{ fov: 75, near: 0.1, far: 10, position: [0, 0, 5] }}>
         <ambientLight intensity={1} color={"#ffffff"} />
 
         <Links />

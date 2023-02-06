@@ -19,7 +19,7 @@ export default function Landing() {
   let timeout;
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [items, masionRef]);
+  }, [items]);
 
   useEffect(() => {
     window.addEventListener("scroll", function () {
@@ -96,7 +96,7 @@ export default function Landing() {
         return (
           <section
             key={index}
-            style={{ height: "30vh" }}
+            style={{ height: "40vh" }}
             className={item.trigger.substring(1)}
             data-scroll-section
           ></section>
